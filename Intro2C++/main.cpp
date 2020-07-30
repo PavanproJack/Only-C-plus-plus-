@@ -15,8 +15,23 @@ void PrintVector(std::vector<int> vec){
     }
     std::cout<< "}"<< "\n";
 }
-    
 
+enum class state{
+    Empty, Obstacle
+};
+
+std::vector<state> parseNew_state(std::string l){
+    std::istringstream newLine(l);
+    int n;
+    char c;
+    std::vector<state> row;
+    while(newLine >> n >> c){
+        row.push_back(n==0 ? state::Empty : state::Obstacle);
+    }
+    //PrintVector(row);
+    return row;
+}
+    
 std::vector<int> ParseLine(std::string s){
     std::istringstream newLine(s);
     size_t pos = 0;
@@ -27,7 +42,7 @@ std::vector<int> ParseLine(std::string s){
     
     it = vec.begin();
     
-    while ((pos = s.find(delimiter)) != std::string::npos) {
+    while ((pos = s.find(delimiter)) != std::string::npos){
         token = s.substr(0, pos);
         //std::cout << stoi(token);
         vec.push_back(stoi(token));
@@ -45,6 +60,7 @@ std::vector<int> parseNew(std::string l){
     char c;
     std::vector<int> row;
     while(newLine >> n >> c){
+        
         row.push_back(n);
     }
     PrintVector(row);
@@ -58,11 +74,41 @@ void ReadBoardFile(std::string path){
         std::string line;
         while(getline(fileObj, line)){
             //std::cout<< line << std::endl;
-            ParseLine(line);
+            //ParseLine(line);
             parseNew(line);
             //std::cout << "\n";
         }
     }
+}
+
+std::vector<std::string> CellString(std::vector<state> row){
+    
+    std::vector<std::string> p;
+    
+    for(auto i : row){
+        std::string v = i == state::Obstacle ?  "⛰️  " : "0  ";
+        std::cout<< v;
+        p.push_back(v);
+    }
+    print(" ");
+    return p;
+}
+
+std::vector<std::vector<state>> ReadBoardFile_state(std::string path){
+    
+    std::vector<std::vector<state>> board{};
+     
+    std::ifstream fileObj(path);
+    
+    if(fileObj.is_open()){
+        std::string line;
+        while(getline(fileObj, line)){
+            std::vector<state> parsedRow = parseNew_state(line);
+            std::vector<std::string> updatedRow = CellString(parsedRow);
+            
+        }
+    }
+    return board;
 }
 
 void ReadStringStream(){
@@ -103,24 +149,14 @@ void TestParseLine() {
 int main()
 {
     std::string boardPath = "map.board";
+    //std::vector<> board;
     //ReadBoardFile(boardPath);
+    //PrintUpdatedBoard();
     //ReadStringStream();
-    TestParseLine();
+    //TestParseLine();
     
-    /*std::string t = "1234";
-    int i = stoi(t);
-    std::cout<< i << std::endl;
+    ReadBoardFile_state(boardPath);
     
-    std::vector<int>::iterator it;
-    std::vector<int> myvector;
-    
-    myvector.insert(it, 1, 30);
-    
-    std::cout << "myvector contains:";
-    for (it=myvector.begin(); it<myvector.end(); it++)
-      std::cout << ' ' << *it;
-    std::cout << '\n';*/
-
     return 0;
 }
 
