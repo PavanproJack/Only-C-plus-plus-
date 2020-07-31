@@ -1,3 +1,5 @@
+
+
 //
 //  main.cpp
 //  A-Star Search
@@ -31,6 +33,14 @@ enum class state{
     Path
 };
 
+
+bool CheckValidCell(int x, int y, vector<vector<state>> grid){
+    if(grid[x][y] == state::Empty)
+        return true;
+    else
+        return false;
+}
+
 bool Compare(vector<int> openNode1, vector<int> openNode2){
     int f_node1 = openNode1[2] + openNode1[3];
     int f_node2 = openNode2[2] + openNode2[3];
@@ -40,10 +50,6 @@ bool Compare(vector<int> openNode1, vector<int> openNode2){
         return false;
 }
 
-/**
- * Sort the two-dimensional vector of ints in descending order.
- */
-
 void CellSort(vector<vector<int>> *v){
     sort(v->begin(), v->end(), Compare);
 }
@@ -52,10 +58,31 @@ void AddToOpen(int x, int y, int g, int h, vector<vector<int>> &open, vector<vec
     
     open.push_back(vector<int>{x, y, g, h});
     //grid[x][y] = state::Closed;
+    
 }
 
 int Heuristic(int x1, int y1, int x2, int y2){
     return (abs(x2 - x1) + abs(y2 - y1));
+}
+
+void ExpandNeighbors(vector<int> &current, vector<vector<int>> &open, vector<vector<state>> &grid, int goal[2]){
+    //const int delta[4][2] = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
+    const vector<vector<int>> delta1 = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
+    int x = current[0];
+    int y = current[1];
+    int g = current[2];
+    //int h = Heuristic(x, y, goal[0], goal[1]);
+    
+    for(auto i : delta1){
+        int x2 = x + i[0];
+        int y2 = y + i[1];
+        if(CheckValidCell(x, y, grid)){
+            int g2 = g + 1;
+            int h2 = Heuristic(x, y, goal[0], goal[1]);
+            AddToOpen(x2, y2, g2, h2, open, grid);
+        }
+    }
+    
 }
 
 vector<vector<state>> Search(vector<vector<state>> grid, int start[2], int goal[2]){
@@ -78,6 +105,9 @@ vector<vector<state>> Search(vector<vector<state>> grid, int start[2], int goal[
         if((x == goal[0]) && (y == goal[1])){
             cout<< "Goal Reached";
             return grid;
+        }
+        else{
+            ExpandNeighbors(current, open, grid, goal);
         }
     }
     return vector<vector<state>>{};
@@ -114,6 +144,7 @@ string CellString(state cell){
 }
 
 void PrintBoard(vector<vector<state>> board){
+    cout<<board.size();
     for(auto i :  board){
         for(auto v : i){
             cout<< CellString(v);
@@ -152,3 +183,5 @@ int main(int argc, const char * argv[]) {
     
     return 0;
 }
+
+
