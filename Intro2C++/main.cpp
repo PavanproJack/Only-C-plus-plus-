@@ -21,6 +21,7 @@ enum class state{
 };
 
 std::vector<state> parseNew_state(std::string l){
+    
     std::istringstream newLine(l);
     int n;
     char c;
