@@ -13,6 +13,7 @@
 #include <vector>
 #include <string>
 #include "pass_by_ref.cpp"
+#include <algorithm>
 
 using std::vector;
 using std::string;
@@ -21,17 +22,65 @@ using std::istringstream;
 using std::cout;
 using std::endl;
 using std::abs;
+using std::sort;
 
 enum class state{
     Empty,
-    Obstacle
+    Obstacle,
+    Closed,
+    Path
 };
 
-vector<vector<state>> Search(vector<vector<state>> board, int start[2], int goal[2]){
+bool Compare(vector<int> openNode1, vector<int> openNode2){
+    int f_node1 = openNode1[2] + openNode1[3];
+    int f_node2 = openNode2[2] + openNode2[3];
+    if(f_node1 > f_node2)
+        return true;
+    else
+        return false;
+}
+
+/**
+ * Sort the two-dimensional vector of ints in descending order.
+ */
+
+void CellSort(vector<vector<int>> *v){
+    sort(v->begin(), v->end(), Compare);
+}
+
+void AddToOpen(int x, int y, int g, int h, vector<vector<int>> &open, vector<vector<state>> &grid){
     
-    vector<vector<state>> path{};
-    cout<<"No Path found"<<endl;
-    return path;
+    open.push_back(vector<int>{x, y, g, h});
+    //grid[x][y] = state::Closed;
+}
+
+int Heuristic(int x1, int y1, int x2, int y2){
+    return (abs(x2 - x1) + abs(y2 - y1));
+}
+
+vector<vector<state>> Search(vector<vector<state>> grid, int start[2], int goal[2]){
+    
+    vector<vector<int>> open{};
+    int x = start[0];
+    int y = start[1];
+    int g = 0;
+    int h = Heuristic(x, y, goal[0], goal[1]);
+    
+    AddToOpen(x, y, g, h, open, grid);
+    
+    while(open.size()>0){
+        CellSort(&open);
+        auto current = open.back();
+        open.pop_back();
+        x = current[0];
+        y = current[1];
+        //grid[x][y] = state::Path;
+        if((x == goal[0]) && (y == goal[1])){
+            cout<< "Goal Reached";
+            return grid;
+        }
+    }
+    return vector<vector<state>>{};
 }
 
 vector<state> parseNewLine(string line){
@@ -73,17 +122,16 @@ void PrintBoard(vector<vector<state>> board){
     }
 }
 
-int Heuristic(int x1, int y1, int x2, int y2){
-    return (abs(x2 - x1) + abs(y2 - y1));
-}
-
-int MultiplyByTwo(int &i)
-{
+int MultiplyByTwo(int &i){
     
 //In the code above, a is passed by reference to the function MultiplyByTwo since the argument to MultiplyByTwo is a reference: &i. This means that i becomes another name for whatever variable that is passed into the function. When the function changes the value of i, then the value of a is changed as well.
     i = 2 * i;
     return i;
 }
+
+
+
+
 
 
 int main(int argc, const char * argv[]) {
@@ -94,6 +142,7 @@ int main(int argc, const char * argv[]) {
     
     vector<vector<state>> solution = Search(board, start, goal);
     PrintBoard(solution);
+    
     //TestHeuristic();
     /*int a = 5;
     std::cout << "The int a = " << a << "\n";
