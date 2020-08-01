@@ -1,5 +1,3 @@
-
-
 //
 //  main.cpp
 //  A-Star Search
@@ -16,6 +14,7 @@
 #include <string>
 #include "pass_by_ref.cpp"
 #include <algorithm>
+#include <exception>
 
 using std::vector;
 using std::string;
@@ -33,14 +32,6 @@ enum class state{
     Path
 };
 
-
-bool CheckValidCell(int x, int y, vector<vector<state>> grid){
-    if(grid[x][y] == state::Empty)
-        return true;
-    else
-        return false;
-}
-
 bool Compare(vector<int> openNode1, vector<int> openNode2){
     int f_node1 = openNode1[2] + openNode1[3];
     int f_node2 = openNode2[2] + openNode2[3];
@@ -54,15 +45,37 @@ void CellSort(vector<vector<int>> *v){
     sort(v->begin(), v->end(), Compare);
 }
 
+
+string CellString(state cell){
+    return (cell == state::Obstacle ? "⛰️  " : "0  ");
+}
+
+void PrintBoard(vector<vector<state>> board){
+    cout<<board.size();
+    for(auto i :  board){
+        for(auto v : i){
+            cout<< CellString(v);
+        }
+        cout<<"\n";
+    }
+}
+
 void AddToOpen(int x, int y, int g, int h, vector<vector<int>> &open, vector<vector<state>> &grid){
-    
+    cout<<x<<"\n"<<y;
     open.push_back(vector<int>{x, y, g, h});
-    //grid[x][y] = state::Closed;
+    grid[x][y] = state::Closed;
     
 }
 
 int Heuristic(int x1, int y1, int x2, int y2){
     return (abs(x2 - x1) + abs(y2 - y1));
+}
+
+bool CheckValidCell(int x, int y, vector<vector<state>> grid){
+    if(grid[x][y] == state::Empty)
+        return true;
+    else
+        return false;
 }
 
 void ExpandNeighbors(vector<int> &current, vector<vector<int>> &open, vector<vector<state>> &grid, int goal[2]){
@@ -71,7 +84,7 @@ void ExpandNeighbors(vector<int> &current, vector<vector<int>> &open, vector<vec
     int x = current[0];
     int y = current[1];
     int g = current[2];
-    //int h = Heuristic(x, y, goal[0], goal[1]);
+    int h = Heuristic(x, y, goal[0], goal[1]);
     
     for(auto i : delta1){
         int x2 = x + i[0];
@@ -82,10 +95,9 @@ void ExpandNeighbors(vector<int> &current, vector<vector<int>> &open, vector<vec
             AddToOpen(x2, y2, g2, h2, open, grid);
         }
     }
-    
 }
 
-vector<vector<state>> Search(vector<vector<state>> grid, int start[2], int goal[2]){
+vector<vector<state>> Search(vector<vector<state>> &grid, int start[2], int goal[2]){
     
     vector<vector<int>> open{};
     int x = start[0];
@@ -101,7 +113,13 @@ vector<vector<state>> Search(vector<vector<state>> grid, int start[2], int goal[
         open.pop_back();
         x = current[0];
         y = current[1];
-        //grid[x][y] = state::Path;
+        try{
+          grid[x][y] = state::Path;
+        }
+        catch (std::exception& e){
+          cout << e.what() << '\n';
+        }
+        
         if((x == goal[0]) && (y == goal[1])){
             cout<< "Goal Reached";
             return grid;
@@ -113,6 +131,7 @@ vector<vector<state>> Search(vector<vector<state>> grid, int start[2], int goal[
     return vector<vector<state>>{};
 }
 
+
 vector<state> parseNewLine(string line){
     istringstream newLine(line);
     vector<state> row;
@@ -123,6 +142,7 @@ vector<state> parseNewLine(string line){
     }
     return row;
 }
+
 
 vector<vector<state>> ReadBoardFile(string path){
     
@@ -139,49 +159,16 @@ vector<vector<state>> ReadBoardFile(string path){
     return board;
 }
 
-string CellString(state cell){
-    return (cell == state::Obstacle ? "⛰️  " : "0  ");
-}
-
-void PrintBoard(vector<vector<state>> board){
-    cout<<board.size();
-    for(auto i :  board){
-        for(auto v : i){
-            cout<< CellString(v);
-        }
-        cout<<"\n";
-    }
-}
-
-int MultiplyByTwo(int &i){
-    
-//In the code above, a is passed by reference to the function MultiplyByTwo since the argument to MultiplyByTwo is a reference: &i. This means that i becomes another name for whatever variable that is passed into the function. When the function changes the value of i, then the value of a is changed as well.
-    i = 2 * i;
-    return i;
-}
-
-
-
-
-
-
 int main(int argc, const char * argv[]) {
     string boardPath = "map.board";
     vector<vector<state>> board = ReadBoardFile(boardPath);
-    int start[2] = {0, 0};
-    int goal[2] = {4, 5};
+    int start[2] = {1, 0};
+    int goal[2] = {3, 2};
     
     vector<vector<state>> solution = Search(board, start, goal);
     PrintBoard(solution);
-    
-    //TestHeuristic();
-    /*int a = 5;
-    std::cout << "The int a = " << a << "\n";
-    int b = MultiplyByTwo(a);
-    std::cout << "The int b = " << b << "\n";
-    std::cout << "The int a now = " << a << "\n";*/
+    cout<< "\n";
     
     return 0;
 }
-
 
