@@ -32,7 +32,6 @@ enum class state{
     Path
 };
 
- 
 void print(std::string statement){
     std::cout<< statement << std::endl;
 }
@@ -65,11 +64,9 @@ void PrintBoard(vector<vector<state>> board){
     }
 }
 
-void AddToOpen(int x, int y, int g, int h, vector<vector<int>> &open, vector<vector<state>> &grid){
-    
+void AddToOpened(int x, int y, int g, int h, vector<vector<int>> &open, vector<vector<state>> &grid){
     open.push_back(vector<int>{x, y, g, h});
     grid[x][y] = state::Closed;
-    
 }
 
 int Heuristic(int x1, int y1, int x2, int y2){
@@ -98,7 +95,7 @@ void ExpandNeighbors(vector<int> &current, vector<vector<int>> &open, vector<vec
         if(CheckValidCell(x2, y2, grid)){
             int g2 = g + 1;
             int h2 = Heuristic(x2, y2, goal[0], goal[1]);
-            AddToOpen(x2, y2, g2, h2, open, grid);
+            AddToOpened(x2, y2, g2, h2, open, grid);
         }
     }
 }
@@ -111,7 +108,7 @@ vector<vector<state>> Search(vector<vector<state>> &grid, int start[2], int goal
     int g = 0;
     int h = Heuristic(x, y, goal[0], goal[1]);
     
-    AddToOpen(x, y, g, h, open, grid);
+    AddToOpened(x, y, g, h, open, grid);
     cout<< "Open vector size : " << open.size() << "\n";
     while(open.size()>0){
         CellSort(&open);
@@ -170,7 +167,5 @@ int main(int argc, const char * argv[]) {
     
     PrintBoard(solution);
     cout<<"\n";
-    
-    
     return 0;
 }
