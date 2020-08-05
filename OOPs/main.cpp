@@ -115,11 +115,25 @@ void validDate::setDate(int d, int m, int y){
         setYear(y);
     }
 }
-
 validDate::validDate(int dt, int mth, int yr){
     
     setDate(dt, mth, yr);
 }
+
+
+class BankAccount{
+public:
+    BankAccount(std::string name, std::string num, double funds);
+    void setFunds(double f);
+    void setName(std::string s);
+    void setAccountNum(std::string a);
+     
+private:
+    std::string acc_num;
+    std::string name;
+    double funds;
+     
+};
 
 
 int main(int argc, const char * argv[]){
@@ -127,9 +141,11 @@ int main(int argc, const char * argv[]){
     //Birthday(21, 01, 1995);
     //Person pavan("Pavan");
     //Person naveen("Naveen");
-    validDate date(21, 01, 1995);
+    validDate date(29, 02, 1995);
     
-    assert(date.day == 21);
+    assert(date.day == 29);
+
+    
     return 0;
     
 }
