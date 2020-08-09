@@ -10,6 +10,7 @@
 
 using std::cout;
 using std::endl;
+using std::cin;
 
 int main(int argc, const char * argv[]) {
     
@@ -31,7 +32,20 @@ int main(int argc, const char * argv[]) {
         cout<< "values " << i << "address is : "  << pNumbers + i << endl;
     }*/
     
-    
+    double testScores[5], sum = 0;
+    double* p_tScore;
+    p_tScore = testScores;
+    double Q;
+    for(int i = 0; i<5; i++){
+        cout<< "Enter score "<< i << endl;
+        cin >> Q;
+        //cout << "Q value is : " << Q;
+        *(p_tScore + i) = Q;
+        sum = sum + *(p_tScore + i);
+    }
+    for(int j : testScores){
+        cout << j << endl;
+    }
     
     return 0;
 }

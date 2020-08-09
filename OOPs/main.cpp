@@ -7,6 +7,13 @@
 //
 #include <cassert>
 #include <iostream>
+#include <vector>
+#include <sstream>
+
+using std::endl;
+using std::cout;
+using std::cin;
+using std::vector;
 
 struct Date{
     public:
@@ -136,14 +143,38 @@ private:
 };
 
 
+class sumArray{
+    
+    
+};
+
+
+
+
+
 int main(int argc, const char * argv[]){
     
     //Birthday(21, 01, 1995);
     //Person pavan("Pavan");
     //Person naveen("Naveen");
-    validDate date(29, 02, 1995);
+    //validDate date(29, 02, 1995);
     
-    assert(date.day == 29);
+    //assert(date.day == 29);
+    
+    /*int N = 0; int K = 0;
+    cout<<"Input"<< endl;
+    cin>> N;
+    cout<< "Enter the number of operations:" << endl;
+    cin>> K;
+    cout<< "N valuye is : "<< N << " and K value is : " << K << endl;*/
+    
+    
+    
+    
+    
+    
+    
+    
 
     
     return 0;
