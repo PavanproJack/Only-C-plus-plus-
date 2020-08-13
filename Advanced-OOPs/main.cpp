@@ -13,7 +13,7 @@ using std::string;
 using std::endl;
 
 class Vehicle{
-protected:
+public:
     //Vehicle(string ff, string cc);
     string fuel = "cng";
     string color = "black";
@@ -26,12 +26,9 @@ protected:
     }
 };
 
-
 //Vehicle::Vehicle(string f, string c): fuel(f), color(c){}
 
- 
-
-class Car : public Vehicle{
+class Car : protected Vehicle{
 public:
     //Car(bool s, string f);
     bool sunroof = false;
@@ -39,12 +36,22 @@ public:
         cout<< "The "<< this->vehicle << " of color "<< this->color << " has "<< this->wheels << " wheels and runs with "<< this->fuel << endl;
     }
 };
+
+class byke : protected Car{
+public:
+    float charging = 90.0;
+    void Print(){
+        cout << this->fuel<< endl;
+    }
+};
  
 
-class Bicycle : public Vehicle{
+class Bicycle : public Car{
 public:
-    Bicycle(bool p);
     bool pedal = true;
+    void Print(){
+        Car::Print();
+    }
 };
 
 
@@ -64,8 +71,11 @@ int main(int argc, const char * argv[]) {
     Car x;
     x.Print();
     
-    Vehicle vh;
-    //cout<< vh.fuel << endl;
+    Bicycle byk;
+    byk.Print();
+    
+    byke bk;
+    bk.Print();
     
     
      
