@@ -5,6 +5,7 @@
 //  Created by PavanKumar on 04/08/2020.
 //  Copyright © 2020 PavanKumar. All rights reserved.
 //
+ 
 #include <cassert>
 #include <iostream>
 #include <vector>
@@ -143,10 +144,6 @@ private:
 };
 
 
-class sumArray{
-    
-    
-};
 
 
 
@@ -160,23 +157,7 @@ int main(int argc, const char * argv[]){
     //validDate date(29, 02, 1995);
     
     //assert(date.day == 29);
-    
-    /*int N = 0; int K = 0;
-    cout<<"Input"<< endl;
-    cin>> N;
-    cout<< "Enter the number of operations:" << endl;
-    cin>> K;
-    cout<< "N valuye is : "<< N << " and K value is : " << K << endl;*/
-    
-    
-    
-    
-    
-    
-    
-    
 
-    
     return 0;
     
 }
