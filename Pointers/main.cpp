@@ -223,8 +223,8 @@ int main(int argc, const char * argv[]) {
      
      double values[10];
      double* d_ptr = values;
-     //cout<< d_ptr << endl;
-     //cout<< values << endl;
+     cout<< d_ptr << endl;
+     cout<< values << endl;
      
      double numbers[5];
      // Array name automatically contains the address of the first element of the array.
