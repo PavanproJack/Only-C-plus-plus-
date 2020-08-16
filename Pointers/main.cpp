@@ -96,9 +96,29 @@ void swap(T &var1, T &var2) {
 
 int main(int argc, const char * argv[]) {
     
+    /* New, Delete, Memset, Malloc Functionality Starts here */
     
     char* kst = new(std::nothrow) char('C');
-    char str[] = "AAA";
+    int* str = new(std::nothrow) int[5];
+    
+     
+    
+    cout << "Before value : " << *kst << endl;
+    cout << "Before value : " << str << endl;
+    
+    memset(kst, 'Q', 2);
+    memset(str, 16 , 5);
+    //cout<< str+2 <<endl;
+    cout << "After value : " << str[4] << endl;
+    
+    
+    
+    for(int i= 0; i< 5; i++){
+        cout << "Int array value at "<< i << " : " << str[i] << endl;
+    }
+    
+    delete kst;
+    delete[] str;
 
     
     int* ktr = NULL;
@@ -136,30 +156,33 @@ int main(int argc, const char * argv[]) {
     delete ktr;
     delete[] arrays;
     
+    /*New Delete Functionality Ends here*/
+    
+    
     //cout << "New Value at the address: pointer is : " << *pointer << endl;
     
-    /*std::string str = "Hello World";
-    const char* ptr = str.c_str();
+    std::string str_ = "Hello World";
+    const char* ptr = str_.c_str();
     std::cout<<"string is: "<<ptr<<std::endl;
-    addSpaces(ptr);
+    //addSpaces(ptr);
      
-    std::cout<<"string is: "<<ptr<<std::endl;*/
+    std::cout<<"string is: "<<ptr<<std::endl;
     
     //cout<< str<< endl;
     
-    //deref df(30);
-    //df.calcAngles();
+    deref df(30);
+    df.calcAngles();
     
-    /*float first_var = 18.10;
+    float first_var = 18.10;
     float second_var = 20.22;
     
     std::cout << "Calling function swap() -----> " << "\n";
     swap(first_var, second_var);
     
     std::cout << "first_var : " << first_var << "\n";
-    std::cout << "second_var : " << second_var << "\n";*/
+    std::cout << "second_var : " << second_var << "\n";
     
-    /*int var1 = 8;
+    int var1 = 8;
     double var2 = 8.2;
 
     int &ref1 = var1;
@@ -173,29 +196,29 @@ int main(int argc, const char * argv[]) {
     var2 = 9.5;
 
     std::cout << ref1 << "\n";
-    std::cout << ref2 << "\n";*/
+    std::cout << ref2 << "\n";
     
-    /*pointerArray pA(4);
+    pointerArray pA(4);
     pA.initializeArray();
     pA.viewMyArray();
     pA.resizeArray(13);
-    pA.viewMyArray();*/
+    pA.viewMyArray();
     
-    /*
-    int* ptr = nullptr;
-    ptr = new int;
+    
+    int* ptr_ = nullptr;
+    ptr_ = new int;
     
     int g = 334;
-    *ptr = g;
+    *ptr_ = g;
     
     // *ptr = 8;
-    cout<< ptr << endl;
+    cout<< ptr_ << endl;
     
-    delete ptr;
+    delete ptr_;
     
      float num = 32;
-     float* ptr;
-     ptr = &num;
+     float* ptr1;
+     ptr1 = &num;
      //std::cout << sizeof(ptr)<<std::endl;
      
      double values[10];
@@ -225,6 +248,6 @@ int main(int argc, const char * argv[]) {
      for(int j : testScores){
          cout << j << endl;
      }
-     */
+     
     return 1;
 }
