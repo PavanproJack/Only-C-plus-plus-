@@ -157,8 +157,13 @@ int main()
     //just to test...
     //TestParseLine();
     
-    ReadBoardFile_state(boardPath);
+    //ReadBoardFile_state(boardPath);
+    int b = 345;
+    int& d = b;
+    std::cout << d << std::endl;
     
+    d = 3;
+    std::cout << b << std::endl;
     return 0;
 }
 
