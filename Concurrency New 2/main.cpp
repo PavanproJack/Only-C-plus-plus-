@@ -13,7 +13,6 @@
 #include <mutex>
 #include <chrono>
 #include <atomic>
- 
 
 using std::cout;
 using std::endl;
@@ -82,6 +81,8 @@ int main(int argc, const char* argv[]) {
     // TRY-LOCK functionality
     thread thread3(AddItems, "thread3");
     thread thread4(AddItems, "thread4");
+    
+    
     
     thread3.join();
     thread4.join();
