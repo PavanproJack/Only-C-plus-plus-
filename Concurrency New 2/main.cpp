@@ -72,7 +72,7 @@ void shopper(){
 }
 int main(int argc, const char* argv[]) {
     
-    cout << "Main process id: " << getpid() << std::endl;
+    /*cout << "Main process id: " << getpid() << std::endl;
     cout << "Main thread id: " << std::this_thread::get_id() << endl;
     
     auto start = std::chrono::high_resolution_clock::now();
@@ -89,20 +89,15 @@ int main(int argc, const char* argv[]) {
     
     // RECURSIVE MUTEX FUNCTIONALITY
     
-    /*thread thread1(shopper);
-    thread thread2(shopper);
     
-    thread1.join();
-    thread2.join();
-    
-    cout << "Garlic count : " << garlic_count << endl;
-    cout << "Potatoes count : " << potato_count << endl;*/
     
     auto stop = std::chrono::high_resolution_clock::now();
     
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
     
-    cout << "Time taken by function: " << duration.count() << " microseconds" << endl;
+    cout << "Time taken by function: " << duration.count() << " microseconds" << endl; */
+    
+    cout << std::size(int()) << endl;
     
     return 0;
 }

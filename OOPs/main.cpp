@@ -16,6 +16,10 @@ using std::cout;
 using std::cin;
 using std::vector;
 
+namespace names {
+int i;
+}
+
 struct Date{
     public:
         int Day();
@@ -157,6 +161,7 @@ int main(int argc, const char * argv[]){
     //validDate date(29, 02, 1995);
     
     //assert(date.day == 29);
+     
 
     return 0;
     

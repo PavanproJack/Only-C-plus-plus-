@@ -28,7 +28,7 @@ char WEEKDAYS[7][10] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", 
 //string WEEKDAYS[7] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 int today= 0;
 //std::mutex pencil;
-//std::shared_mutex pencil;
+std::shared_mutex pencil;
 
 void calendar_reader(int readerID){
     for (int i=0; i<7; i++) {
@@ -69,6 +69,8 @@ int main(int argc, const char * argv[]) {
     for (unsigned int i=0; i<writers.size(); i++) {
         writers[i].join();
     }
+    
+    
     
     return 0;
 }

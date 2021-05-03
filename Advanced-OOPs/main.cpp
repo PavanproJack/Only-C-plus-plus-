@@ -99,7 +99,6 @@ public:
 private:
     float width = 12.45;
     float height = 13.37;
-
 };
 
 /***************** PolyMorphism *************/
@@ -174,6 +173,29 @@ class Circle_ : public Shape{
          
 };
 
+class Publish_
+{
+private:
+    int t{0};
+public:
+    Publish_(int arg);
+    ~Publish_();
+    int getValue();
+};
+
+Publish_::Publish_(int arg)
+{
+    t = arg;
+}
+
+int Publish_::getValue(){
+    return t;
+}
+
+Publish_::~Publish_()
+{
+}
+
 
 
 
@@ -218,6 +240,9 @@ int main(int argc, const char * argv[]) {
     
     Rectangle_ rv(23, 45.56);
     cout<< rv.Perimeter() << endl;
+    
+    Publish_ tv = Publish_(56);
+    cout << tv.getValue() << endl;
     
  
     
