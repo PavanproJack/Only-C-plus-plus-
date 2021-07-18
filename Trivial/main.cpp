@@ -16,6 +16,44 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+
+class destruct{
+private:
+    int s, d;
+public:
+    destruct(int& s, int& d){
+        this->s = s;
+        this->d = d;
+    }
+    ~destruct(){
+        cout<< "S : "<< s << "D : "<< d << endl;
+    }
+};
+
+
+class construct{
+private:
+    int l, m;
+public:
+    construct(){
+        l = 34;
+        m = 45;
+    }
+    construct(int& p, int& q){
+        l = p;
+        m = q;
+    }
+    void get(){
+        cout<< l << " " << m << endl;
+    }
+    void update(int l, int m){
+//        (*this).l = l;
+//        (*this).m = m;
+        this->m = m;
+        this->l = l;
+    }
+};
+
 class arrayOfObjects{
 private:
     int id, subjects;
@@ -126,7 +164,8 @@ int main(int argc, char **argv)
     rtn3 = rtn1.sum(rtn2);
     rtn3.showData();
     */
-    int n;
+    
+    /*int n;
     cout<< "Enter no.of students : \n";
     cin>> n;
      
@@ -141,10 +180,19 @@ int main(int argc, char **argv)
     
     for(int k = 0; k<n; k++){
         arr[k].getStudentData();
-    }
+    }*/
     
+    /*int j = 56;
+    int h = 67;
+    construct cst(j, h);
+    //construct cst;
+    cst.get();
+    cst.update(54, 90);
+    cst.get();*/
     
-  
+    int r_ = 46;
+    int h = 90;
+    destruct dst(r_, h);
     
 
     

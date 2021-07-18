@@ -16,6 +16,8 @@ using std::cout;
 using std::cin;
 using std::vector;
 
+
+
 namespace names {
 int i;
 }

@@ -20,6 +20,7 @@
 		D88F0F3C24E5168500B91A19 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D88F0F3B24E5168500B91A19 /* main.cpp */; };
 		D89BF45C24ED89A00031F58A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D89BF45B24ED89A00031F58A /* main.cpp */; };
 		D8DEFD6124D9E99300ED774F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8DEFD6024D9E99300ED774F /* main.cpp */; };
+		D8FC2DF626937EB90015A803 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8FC2DF526937EB90015A803 /* main.cpp */; };
 		D8FC7FE824FF804600605F2F /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8FC7FE724FF804600605F2F /* main.cpp */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +133,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		D8FC2DF126937EB90015A803 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 		D8FC7FE324FF804500605F2F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -171,6 +181,8 @@
 		D89BF45B24ED89A00031F58A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D8DEFD5E24D9E99300ED774F /* OOPs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = OOPs; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8DEFD6024D9E99300ED774F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		D8FC2DF326937EB90015A803 /* Contour */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Contour; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8FC2DF526937EB90015A803 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D8FC7FE524FF804500605F2F /* Concurrency New 3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Concurrency New 3"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8FC7FE724FF804600605F2F /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -260,6 +272,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D8FC2DF026937EB90015A803 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D8FC7FE224FF804500605F2F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,6 +337,7 @@
 				D8FC7FE624FF804500605F2F /* Concurrency New 3 */,
 				D8752A2B25458599002E1225 /* Trivial */,
 				D81750BB261081B0009F41CD /* Restart-C++ */,
+				D8FC2DF426937EB90015A803 /* Contour */,
 				D843CBA124C9EAEC00C3FD49 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -338,6 +358,7 @@
 				D8FC7FE524FF804500605F2F /* Concurrency New 3 */,
 				D8752A2A25458599002E1225 /* Trivial */,
 				D81750BA261081B0009F41CD /* Restart-C++ */,
+				D8FC2DF326937EB90015A803 /* Contour */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -407,6 +428,14 @@
 				D8DEFD6024D9E99300ED774F /* main.cpp */,
 			);
 			path = OOPs;
+			sourceTree = "<group>";
+		};
+		D8FC2DF426937EB90015A803 /* Contour */ = {
+			isa = PBXGroup;
+			children = (
+				D8FC2DF526937EB90015A803 /* main.cpp */,
+			);
+			path = Contour;
 			sourceTree = "<group>";
 		};
 		D8FC7FE624FF804500605F2F /* Concurrency New 3 */ = {
@@ -624,6 +653,23 @@
 			productReference = D8DEFD5E24D9E99300ED774F /* OOPs */;
 			productType = "com.apple.product-type.tool";
 		};
+		D8FC2DF226937EB90015A803 /* Contour */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D8FC2DF926937EB90015A803 /* Build configuration list for PBXNativeTarget "Contour" */;
+			buildPhases = (
+				D8FC2DEF26937EB90015A803 /* Sources */,
+				D8FC2DF026937EB90015A803 /* Frameworks */,
+				D8FC2DF126937EB90015A803 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Contour;
+			productName = Contour;
+			productReference = D8FC2DF326937EB90015A803 /* Contour */;
+			productType = "com.apple.product-type.tool";
+		};
 		D8FC7FE424FF804500605F2F /* Concurrency New 3 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D8FC7FEB24FF804600605F2F /* Build configuration list for PBXNativeTarget "Concurrency New 3" */;
@@ -686,6 +732,9 @@
 					D8DEFD5D24D9E99300ED774F = {
 						CreatedOnToolsVersion = 11.6;
 					};
+					D8FC2DF226937EB90015A803 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
 					D8FC7FE424FF804500605F2F = {
 						CreatedOnToolsVersion = 11.7;
 					};
@@ -717,6 +766,7 @@
 				D8FC7FE424FF804500605F2F /* Concurrency New 3 */,
 				D8752A2925458599002E1225 /* Trivial */,
 				D81750B9261081B0009F41CD /* Restart-C++ */,
+				D8FC2DF226937EB90015A803 /* Contour */,
 			);
 		};
 /* End PBXProject section */
@@ -816,6 +866,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8DEFD6124D9E99300ED774F /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D8FC2DEF26937EB90015A803 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8FC2DF626937EB90015A803 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1141,6 +1199,26 @@
 			};
 			name = Release;
 		};
+		D8FC2DF726937EB90015A803 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D8FC2DF826937EB90015A803 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		D8FC7FE924FF804600605F2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1273,6 +1351,15 @@
 			buildConfigurations = (
 				D8DEFD6224D9E99300ED774F /* Debug */,
 				D8DEFD6324D9E99300ED774F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D8FC2DF926937EB90015A803 /* Build configuration list for PBXNativeTarget "Contour" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D8FC2DF726937EB90015A803 /* Debug */,
+				D8FC2DF826937EB90015A803 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
