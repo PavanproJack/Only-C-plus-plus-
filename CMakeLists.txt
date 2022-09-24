@@ -4,9 +4,17 @@ cmake_minimum_required(VERSION 3.0)
 # Name of the project
 project(Project)
 
+include_directories(include)
+
+
 # Add all the source files needed to build the executable
 # add_executable(Project src/main.cpp src/helpers/AwesomeHelper.cpp src/helpers/OkHelper.cpp src/models/Person.cpp)
-add_executable(Project src/main.cpp src/literals.cpp)
+add_executable(Project src/main.cpp
+                       src/learnings/literals.cpp
+                       src/learnings/test.cpp
+                       
+                       )
+
 
 # Include the directory where MyLibrary project is. Otherwise, we can't use the
 # library
