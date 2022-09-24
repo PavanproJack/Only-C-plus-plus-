@@ -1,6 +1,6 @@
 # C-plus-plus
 
-Outputs:
+##### Outputs:
 Intro2C++:
 
 
