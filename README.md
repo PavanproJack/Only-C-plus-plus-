@@ -1,6 +1,6 @@
 # C-plus-plus
 
-##### Outputs:
-Intro2C++:
+
+The primary purpose of a header file is to propagate declarations to code files.
 
 
