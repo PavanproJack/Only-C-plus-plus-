@@ -4,6 +4,8 @@ cmake_minimum_required(VERSION 3.0)
 # Name of the project
 project(Project)
 
+set(CMAKE_CXX_STANDARD 20)
+
 include_directories(include)
 
 
@@ -12,7 +14,9 @@ include_directories(include)
 add_executable(Project src/main.cpp
                        src/learnings/literals.cpp
                        src/learnings/test.cpp
-                       
+                       src/learnings/arrayss.cpp
+                       src/learnings/pointerss.cpp
+
                        )
 
 

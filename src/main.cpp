@@ -1,11 +1,13 @@
-#include<iostream>
+#include "include/learnings/arrayss.h"
 #include "include/learnings/literals.h"
+#include "include/learnings/pointerss.h"
+#include <iostream>
 
+int main() {
 
-int main(){
-    std::cout<< "Hello Pavan" << std::endl;
-    std::cout << "The sum of 3 and 4 is " << add(3, 4.0) << '\n';
-    return 0;
+  // literals_and_for_loops();
+  // declare_and_use_arrays();
+  initialise_pointers();
+
+  return 0;
 }
-
-
